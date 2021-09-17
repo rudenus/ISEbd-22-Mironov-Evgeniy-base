@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace ShipForm
 {
-	public partial class Form1 : Form
+	public partial class FormShip : Form
 	{
 		//Graphics g;
 		Ship motorShip;
 		Direction direction;
-		public Form1()
+		public FormShip()
 		{
 			InitializeComponent();
 		}

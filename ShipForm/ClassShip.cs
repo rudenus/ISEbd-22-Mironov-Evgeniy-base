@@ -12,8 +12,8 @@ namespace ShipForm
 		private Point StartPosition;
 		private int pictureWidth;
 		private int pictureHeight;
-		private readonly int carWidth = 180;
-		private readonly int carHeight = 200;
+		private readonly int carWidth = 150;
+		private readonly int carHeight = 130;
 		public int MaxSpeed { private set; get; }
 		public float Weight { private set; get; }
 		public Color MainColor { private set; get; }
