@@ -1,6 +1,6 @@
 ﻿namespace ShipForm
 {
-	partial class Form1
+	partial class FormShip
 	{
 		/// <summary>
 		/// Обязательная переменная конструктора.
