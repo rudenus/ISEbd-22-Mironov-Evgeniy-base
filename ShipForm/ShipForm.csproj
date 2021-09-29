@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractClass.cs" />
+    <Compile Include="ClassSteamer.cs" />
     <Compile Include="ClassShip.cs" />
     <Compile Include="EnumDirection.cs" />
     <Compile Include="FormShip.cs">
@@ -54,6 +56,7 @@
     <Compile Include="FormShip.Designer.cs">
       <DependentUpon>FormShip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interface1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormShip.resx">

@@ -14,7 +14,6 @@ namespace ShipForm
 	{
 		//Graphics g;
 		Ship motorShip;
-		Direction direction;
 		public FormShip()
 		{
 			InitializeComponent();
@@ -23,15 +22,14 @@ namespace ShipForm
 		{
 			Bitmap bmp = new Bitmap(pictureBoxShip.Width,pictureBoxShip.Height);
 			Graphics g = Graphics.FromImage(bmp);
-			motorShip.DrawShip(g);
+			motorShip.DrawTransport(g);
 			pictureBoxShip.Image = bmp;
 		}
 		private void buttonCreate_Click(object sender, EventArgs e)
 		{
 			Random rand = new Random();
-			motorShip = new Ship();
-			motorShip.SetPosition(rand.Next(150), rand.Next(150));
-			motorShip.Init(pictureBoxShip.Width, pictureBoxShip.Height, Color.LightGray, Color.LightBlue, 10, 2);
+			motorShip = new Ship(10,2, Color.LightGray);
+			motorShip.SetPosition(rand.Next(150), rand.Next(150), pictureBoxShip.Width, pictureBoxShip.Height);
 			Draw();
 		}
         private void buttonRight_Click(object sender, EventArgs e)
@@ -40,19 +38,27 @@ namespace ShipForm
 			switch (name)
 			{
 				case "buttonUp":
-					motorShip.Drive(Direction.Up);
+					motorShip.MoveTransport(Direction.Up);
 					break;
 				case "buttonDown":
-					motorShip.Drive(Direction.Down);
+					motorShip.MoveTransport(Direction.Down);
 					break;
 				case "buttonLeft":
-					motorShip.Drive(Direction.Left);
+					motorShip.MoveTransport(Direction.Left);
 					break;
 				case "buttonRight":
-					motorShip.Drive(Direction.Right);
+					motorShip.MoveTransport(Direction.Right);
 					break;
 			}
 			Draw();
 		}
-    }
+
+		private void buttonCreateSteamer_Click(object sender, EventArgs e)
+		{
+			Random rand = new Random();
+			motorShip = new ClassSteamer(10, 2, Color.LightGray,Color.LightBlue,true,true);
+			motorShip.SetPosition(rand.Next(150), rand.Next(150), pictureBoxShip.Width, pictureBoxShip.Height);
+			Draw();
+		}
+	}
 }

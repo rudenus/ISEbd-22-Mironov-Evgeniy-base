@@ -7,37 +7,34 @@ using System.Threading.Tasks;
 
 namespace ShipForm
 {
-	class Ship
+	class Ship:vessel
 	{
-		private Point StartPosition;
-		private int pictureWidth;
-		private int pictureHeight;
-		private readonly int carWidth = 150;
-		private readonly int carHeight = 130;
-		public int MaxSpeed { private set; get; }
-		public float Weight { private set; get; }
-		public Color MainColor { private set; get; }
-		public Color DopColor { private set; get; }
+		protected readonly int shipWidth = 150;
+		protected readonly int shipHeight = 130;
+		
 
-		public void SetPosition(int x,int y)
+		public Ship(int maxSpeed, float weight, Color mainColor)
 		{
-			StartPosition.X = x;
-			StartPosition.Y = y;
-		}
-		public void Init( int width,int height, Color mainColor, Color dopColor,int speed,int weight)
-		{
-			MaxSpeed = speed;
-			pictureHeight = height;
-			pictureWidth = width;
-			MainColor = mainColor;
-			DopColor = dopColor;
+			MaxSpeed = maxSpeed;
 			Weight = weight;
+			MainColor = mainColor;
 		}
-		public void DrawShip(Graphics g)
+		protected Ship(int maxSpeed, float weight, Color mainColor, int shipWidth, int
+shipHeight)
+		{
+			MaxSpeed = maxSpeed;
+			Weight = weight;
+			MainColor = mainColor;
+			this.shipWidth = shipWidth;
+			this.shipHeight = shipHeight;
+		}
+
+		
+		public override void DrawTransport(Graphics g)
 		{
 			Pen pen = Pens.Black;
 			Brush brush = new SolidBrush(MainColor);
-			Brush brushDop= new SolidBrush(DopColor);
+			
 			g.DrawLine(pen, StartPosition.X, StartPosition.Y + 100, StartPosition.X + 150, StartPosition.Y + 100);
 			g.DrawLine(pen, StartPosition.X+30, StartPosition.Y + 150, StartPosition.X + 120, StartPosition.Y + 150);
 			g.DrawLine(pen, StartPosition.X, StartPosition.Y + 100, StartPosition.X + 30, StartPosition.Y + 150);
@@ -48,31 +45,24 @@ namespace ShipForm
 			g.DrawLine(pen, StartPosition.X + 20, StartPosition.Y + 105, StartPosition.X + 20, StartPosition.Y + 120);
 			g.DrawLine(pen, StartPosition.X + 15, StartPosition.Y + 110, StartPosition.X + 25, StartPosition.Y + 110);
 			g.DrawLine(pen, StartPosition.X + 17, StartPosition.Y + 120, StartPosition.X + 23, StartPosition.Y + 120);
-			g.DrawEllipse(pen, StartPosition.X + 30, StartPosition.Y + 120, 10, 10);
-			g.DrawEllipse(pen, StartPosition.X + 45, StartPosition.Y + 120, 10, 10);
-			g.DrawEllipse(pen, StartPosition.X + 60, StartPosition.Y + 120, 10, 10);
-			g.DrawEllipse(pen, StartPosition.X + 75, StartPosition.Y + 120, 10, 10);
-			g.DrawEllipse(pen, StartPosition.X + 90, StartPosition.Y + 120, 10, 10);
-			g.FillEllipse(brushDop, StartPosition.X + 90, StartPosition.Y + 120, 10, 10);
-			g.FillEllipse(brushDop, StartPosition.X + 75, StartPosition.Y + 120, 10, 10);
-			g.FillEllipse(brushDop, StartPosition.X + 60, StartPosition.Y + 120, 10, 10);
-			g.FillEllipse(brushDop, StartPosition.X + 45, StartPosition.Y + 120, 10, 10);
-			g.FillEllipse(brushDop, StartPosition.X + 30, StartPosition.Y + 120, 10, 10);
+		
+			
 			g.DrawLine(pen, StartPosition.X + 120, StartPosition.Y + 102, StartPosition.X + 120, StartPosition.Y + 145);
 			g.DrawLine(pen, StartPosition.X + 110, StartPosition.Y + 102, StartPosition.X + 110, StartPosition.Y + 145);
 			g.DrawLine(pen, StartPosition.X + 110, StartPosition.Y + 110, StartPosition.X + 120, StartPosition.Y + 110);
 			g.DrawLine(pen, StartPosition.X + 110, StartPosition.Y + 120, StartPosition.X + 120, StartPosition.Y + 120);
 			g.DrawLine(pen, StartPosition.X + 110, StartPosition.Y + 130, StartPosition.X + 120, StartPosition.Y + 130);
 			g.DrawLine(pen, StartPosition.X + 110, StartPosition.Y + 140, StartPosition.X + 120, StartPosition.Y + 140);
+			
 		}
-		public void Drive(Direction direction)
+		public override void MoveTransport(Direction direction)
 		{
 			int step = (int)Math.Round(MaxSpeed * 10 / Weight);
 			switch (direction)
 			{
 				// вправо
 				case Direction.Right:
-					if (StartPosition.X + step < pictureWidth - carWidth)
+					if (StartPosition.X + step < pictureWidth - shipWidth)
 					{
 						StartPosition.X += step;
 					}
@@ -93,7 +83,7 @@ namespace ShipForm
 					break;
 				//вниз
 				case Direction.Down:
-					if (StartPosition.Y + step < pictureHeight - carHeight)
+					if (StartPosition.Y + step < pictureHeight - shipHeight)
 					{
 						StartPosition.Y += step;
 					}
