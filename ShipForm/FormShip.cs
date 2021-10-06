@@ -14,15 +14,22 @@ namespace ShipForm
 	{
 		//Graphics g;
 		Ship motorShip;
+		private IShip iship;
 		public FormShip()
 		{
 			InitializeComponent();
+		}
+		public void SetCar(IShip iship)
+		{
+			this.iship = iship; 
+			Draw();
+
 		}
 		private void Draw()
 		{
 			Bitmap bmp = new Bitmap(pictureBoxShip.Width,pictureBoxShip.Height);
 			Graphics g = Graphics.FromImage(bmp);
-			motorShip.DrawTransport(g);
+			motorShip?.DrawTransport(g);
 			pictureBoxShip.Image = bmp;
 		}
 		private void buttonCreate_Click(object sender, EventArgs e)
@@ -38,16 +45,16 @@ namespace ShipForm
 			switch (name)
 			{
 				case "buttonUp":
-					motorShip.MoveTransport(Direction.Up);
+					motorShip?.MoveTransport(Direction.Up);
 					break;
 				case "buttonDown":
-					motorShip.MoveTransport(Direction.Down);
+					motorShip?.MoveTransport(Direction.Down);
 					break;
 				case "buttonLeft":
-					motorShip.MoveTransport(Direction.Left);
+					motorShip?.MoveTransport(Direction.Left);
 					break;
 				case "buttonRight":
-					motorShip.MoveTransport(Direction.Right);
+					motorShip?.MoveTransport(Direction.Right);
 					break;
 			}
 			Draw();
