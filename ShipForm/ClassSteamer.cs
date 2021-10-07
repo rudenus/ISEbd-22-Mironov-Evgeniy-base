@@ -14,7 +14,7 @@ namespace ShipForm
         public bool drawWindow;
         public ClassSteamer(int maxSpeed, int weight, Color mainColor, Color dopColor,
 bool drawWindow, bool drawPipe) :
- base(maxSpeed, weight, mainColor, 150, 150)
+ base(maxSpeed, weight, mainColor, 170, 180)
         {
             DopColor = dopColor;
             this.drawPipe = drawPipe;

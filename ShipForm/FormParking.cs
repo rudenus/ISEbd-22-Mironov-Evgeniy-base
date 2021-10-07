@@ -31,7 +31,7 @@ namespace ShipForm
         {
             ColorDialog dialog = new ColorDialog(); if (dialog.ShowDialog() == DialogResult.OK)
             {
-                var ship = new Ship(100, 1000, dialog.Color);
+                var ship = new Ship(10,2, dialog.Color);
                 if (parking + ship)
                 {
                     Draw();
@@ -51,7 +51,7 @@ namespace ShipForm
                 ColorDialog dialogDop = new ColorDialog();
                 if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
-                    var ship = new ClassSteamer(100, 1000, dialog.Color, dialogDop.Color, true, true);
+                    var ship = new ClassSteamer(10, 2, dialog.Color, dialogDop.Color, true, true);
                     if (parking + ship)
                     {
                         Draw();
@@ -68,10 +68,17 @@ namespace ShipForm
         {
             if (maskedTextBox.Text != "")
             {
-                var car = parking - Convert.ToInt32(maskedTextBox.Text); if (car != null)
+                var ship = parking - Convert.ToInt32(maskedTextBox.Text);
+                Random rand = new Random();
+                
+                if (ship != null)
                 {
-                    FormShip form = new FormShip(); form.SetCar(car);
+                    FormShip form = new FormShip();
+                    ship.SetPosition(rand.Next(150), rand.Next(150), form.Size.Width, form.Size.Height);
+                    form.SetShip(ship);
                     form.ShowDialog();
+                    
+                    
                 }
                 Draw();
             }

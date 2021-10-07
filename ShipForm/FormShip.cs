@@ -13,13 +13,12 @@ namespace ShipForm
 	public partial class FormShip : Form
 	{
 		//Graphics g;
-		Ship motorShip;
 		private IShip iship;
 		public FormShip()
 		{
 			InitializeComponent();
 		}
-		public void SetCar(IShip iship)
+		public void SetShip(IShip iship)
 		{
 			this.iship = iship; 
 			Draw();
@@ -29,14 +28,14 @@ namespace ShipForm
 		{
 			Bitmap bmp = new Bitmap(pictureBoxShip.Width,pictureBoxShip.Height);
 			Graphics g = Graphics.FromImage(bmp);
-			motorShip?.DrawTransport(g);
+			iship?.DrawTransport(g);
 			pictureBoxShip.Image = bmp;
 		}
 		private void buttonCreate_Click(object sender, EventArgs e)
 		{
 			Random rand = new Random();
-			motorShip = new Ship(10,2, Color.LightGray);
-			motorShip.SetPosition(rand.Next(150), rand.Next(150), pictureBoxShip.Width, pictureBoxShip.Height);
+			iship = new Ship(10,2, Color.LightGray);
+			iship.SetPosition(rand.Next(150), rand.Next(150), pictureBoxShip.Width, pictureBoxShip.Height);
 			Draw();
 		}
         private void buttonRight_Click(object sender, EventArgs e)
@@ -45,16 +44,16 @@ namespace ShipForm
 			switch (name)
 			{
 				case "buttonUp":
-					motorShip?.MoveTransport(Direction.Up);
+					iship?.MoveTransport(Direction.Up);
 					break;
 				case "buttonDown":
-					motorShip?.MoveTransport(Direction.Down);
+					iship?.MoveTransport(Direction.Down);
 					break;
 				case "buttonLeft":
-					motorShip?.MoveTransport(Direction.Left);
+					iship?.MoveTransport(Direction.Left);
 					break;
 				case "buttonRight":
-					motorShip?.MoveTransport(Direction.Right);
+					iship?.MoveTransport(Direction.Right);
 					break;
 			}
 			Draw();
@@ -63,8 +62,8 @@ namespace ShipForm
 		private void buttonCreateSteamer_Click(object sender, EventArgs e)
 		{
 			Random rand = new Random();
-			motorShip = new ClassSteamer(10, 2, Color.LightGray,Color.LightBlue,true,true);
-			motorShip.SetPosition(rand.Next(150), rand.Next(150), pictureBoxShip.Width, pictureBoxShip.Height);
+			iship = new ClassSteamer(10, 2, Color.LightGray,Color.LightBlue,true,true);
+			iship.SetPosition(rand.Next(150), rand.Next(150), pictureBoxShip.Width, pictureBoxShip.Height);
 			Draw();
 		}
 	}
