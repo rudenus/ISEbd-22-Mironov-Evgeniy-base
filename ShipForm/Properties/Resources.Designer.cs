@@ -63,9 +63,9 @@ namespace ShipForm.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap down {
+        internal static System.Drawing.Bitmap down1 {
             get {
-                object obj = ResourceManager.GetObject("down", resourceCulture);
+                object obj = ResourceManager.GetObject("down1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace ShipForm.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap left {
+        internal static System.Drawing.Bitmap left1 {
             get {
-                object obj = ResourceManager.GetObject("left", resourceCulture);
+                object obj = ResourceManager.GetObject("left1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace ShipForm.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap right {
+        internal static System.Drawing.Bitmap right1 {
             get {
-                object obj = ResourceManager.GetObject("right", resourceCulture);
+                object obj = ResourceManager.GetObject("right1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace ShipForm.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap up {
+        internal static System.Drawing.Bitmap up1 {
             get {
-                object obj = ResourceManager.GetObject("up", resourceCulture);
+                object obj = ResourceManager.GetObject("up1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

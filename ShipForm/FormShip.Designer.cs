@@ -29,12 +29,12 @@
 		private void InitializeComponent()
 		{
 			this.buttonCreate = new System.Windows.Forms.Button();
-			this.pictureBoxShip = new System.Windows.Forms.PictureBox();
 			this.buttonLeft = new System.Windows.Forms.Button();
-			this.buttonUp = new System.Windows.Forms.Button();
 			this.buttonDown = new System.Windows.Forms.Button();
 			this.buttonRight = new System.Windows.Forms.Button();
 			this.buttonCreateSteamer = new System.Windows.Forms.Button();
+			this.buttonUp = new System.Windows.Forms.Button();
+			this.pictureBoxShip = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxShip)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -48,22 +48,12 @@
 			this.buttonCreate.UseVisualStyleBackColor = true;
 			this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
 			// 
-			// pictureBoxShip
-			// 
-			this.pictureBoxShip.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pictureBoxShip.Location = new System.Drawing.Point(0, 0);
-			this.pictureBoxShip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-			this.pictureBoxShip.Name = "pictureBoxShip";
-			this.pictureBoxShip.Size = new System.Drawing.Size(800, 450);
-			this.pictureBoxShip.TabIndex = 8;
-			this.pictureBoxShip.TabStop = false;
-			// 
 			// buttonLeft
 			// 
 			this.buttonLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonLeft.BackgroundImage = global::ShipForm.Properties.Resources.left;
+			this.buttonLeft.BackgroundImage = global::ShipForm.Properties.Resources.left1;
 			this.buttonLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.buttonLeft.Location = new System.Drawing.Point(609, 343);
+			this.buttonLeft.Location = new System.Drawing.Point(749, 404);
 			this.buttonLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.buttonLeft.Name = "buttonLeft";
 			this.buttonLeft.Size = new System.Drawing.Size(58, 64);
@@ -71,25 +61,12 @@
 			this.buttonLeft.UseVisualStyleBackColor = true;
 			this.buttonLeft.Click += new System.EventHandler(this.buttonRight_Click);
 			// 
-			// buttonUp
-			// 
-			this.buttonUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonUp.BackgroundImage = global::ShipForm.Properties.Resources.up;
-			this.buttonUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.buttonUp.Location = new System.Drawing.Point(671, 274);
-			this.buttonUp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-			this.buttonUp.Name = "buttonUp";
-			this.buttonUp.Size = new System.Drawing.Size(58, 64);
-			this.buttonUp.TabIndex = 10;
-			this.buttonUp.UseVisualStyleBackColor = true;
-			this.buttonUp.Click += new System.EventHandler(this.buttonRight_Click);
-			// 
 			// buttonDown
 			// 
 			this.buttonDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonDown.BackgroundImage = global::ShipForm.Properties.Resources.down;
+			this.buttonDown.BackgroundImage = global::ShipForm.Properties.Resources.down1;
 			this.buttonDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.buttonDown.Location = new System.Drawing.Point(671, 343);
+			this.buttonDown.Location = new System.Drawing.Point(811, 404);
 			this.buttonDown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.buttonDown.Name = "buttonDown";
 			this.buttonDown.Size = new System.Drawing.Size(58, 64);
@@ -100,9 +77,9 @@
 			// buttonRight
 			// 
 			this.buttonRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonRight.BackgroundImage = global::ShipForm.Properties.Resources.right;
+			this.buttonRight.BackgroundImage = global::ShipForm.Properties.Resources.right1;
 			this.buttonRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.buttonRight.Location = new System.Drawing.Point(734, 343);
+			this.buttonRight.Location = new System.Drawing.Point(874, 404);
 			this.buttonRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.buttonRight.Name = "buttonRight";
 			this.buttonRight.Size = new System.Drawing.Size(58, 64);
@@ -120,11 +97,34 @@
 			this.buttonCreateSteamer.UseVisualStyleBackColor = true;
 			this.buttonCreateSteamer.Click += new System.EventHandler(this.buttonCreateSteamer_Click);
 			// 
+			// buttonUp
+			// 
+			this.buttonUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonUp.BackgroundImage = global::ShipForm.Properties.Resources.up1;
+			this.buttonUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+			this.buttonUp.Location = new System.Drawing.Point(811, 335);
+			this.buttonUp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.buttonUp.Name = "buttonUp";
+			this.buttonUp.Size = new System.Drawing.Size(58, 64);
+			this.buttonUp.TabIndex = 10;
+			this.buttonUp.UseVisualStyleBackColor = true;
+			this.buttonUp.Click += new System.EventHandler(this.buttonRight_Click);
+			// 
+			// pictureBoxShip
+			// 
+			this.pictureBoxShip.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pictureBoxShip.Location = new System.Drawing.Point(0, 0);
+			this.pictureBoxShip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.pictureBoxShip.Name = "pictureBoxShip";
+			this.pictureBoxShip.Size = new System.Drawing.Size(940, 511);
+			this.pictureBoxShip.TabIndex = 8;
+			this.pictureBoxShip.TabStop = false;
+			// 
 			// FormShip
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(940, 511);
 			this.Controls.Add(this.buttonCreateSteamer);
 			this.Controls.Add(this.buttonRight);
 			this.Controls.Add(this.buttonDown);

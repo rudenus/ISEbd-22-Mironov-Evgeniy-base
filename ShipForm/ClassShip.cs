@@ -9,8 +9,8 @@ namespace ShipForm
 {
 	class Ship:vessel
 	{
-		protected readonly int shipWidth = 150;
-		protected readonly int shipHeight = 130;
+		protected readonly int shipWidth = 170;
+		protected readonly int shipHeight = 195;
 		
 
 		public Ship(int maxSpeed, float weight, Color mainColor)
