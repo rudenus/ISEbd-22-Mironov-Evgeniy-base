@@ -141,6 +141,7 @@ namespace ShipForm
                     ReloadLevels();
                 }
             }
+            Draw();
         }
 
         private void listBoxParkings_SelectedIndexChanged(object sender, EventArgs e)
