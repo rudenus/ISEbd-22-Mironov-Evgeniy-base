@@ -25,5 +25,10 @@ namespace ShipForm
             pictureWidth = width;
             pictureHeight = height;
         }
+        public void SetMainColor(Color color)
+        {
+            MainColor = color;
+        }
+
     }
 }
