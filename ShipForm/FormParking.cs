@@ -70,35 +70,6 @@ namespace ShipForm
             }
         }
 
-
-        private void ParkingSteamerButton_Click(object sender, EventArgs e)
-        {
-            if (listBoxParkings.SelectedIndex > -1)
-            {
-                if (listBoxParkings.SelectedIndex > -1)
-                {
-                    ColorDialog dialog = new ColorDialog();
-                    if (dialog.ShowDialog() == DialogResult.OK)
-                    {
-                        ColorDialog dialogDop = new ColorDialog();
-                        if (dialogDop.ShowDialog() == DialogResult.OK)
-                        {
-                            var ship = new ClassSteamer(10, 2, dialog.Color, dialogDop.Color, true, true);
-                            if (parkingCol[listBoxParkings.SelectedItem.ToString()] + ship)
-                            {
-                                Draw();
-                            }
-
-                            else
-                            {
-                                MessageBox.Show("Парковка переполнена");
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
         private void PickUpButton_Click(object sender, EventArgs e)
         {
             if (listBoxParkings.SelectedIndex > -1 && maskedTextBox.Text != "")
