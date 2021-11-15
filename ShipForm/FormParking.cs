@@ -49,23 +49,27 @@ namespace ShipForm
                 pictureBoxParking.Image = bmp;
             }
         }
-
         private void ParkingShipButton_Click(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog(); if (dialog.ShowDialog() == DialogResult.OK)
+            var formCarConfig = new FormConfig();
+            formCarConfig.AddEvent(AddShip);
+            formCarConfig.Show();
+        }
+        private void AddShip(Vessel car)
+        {
+            if (car != null && listBoxParkings.SelectedIndex > -1)
             {
-                var ship = new Ship(10,2, dialog.Color);
-                if (parkingCol[listBoxParkings.SelectedItem.ToString()]+ ship)
+                if ((parkingCol[listBoxParkings.SelectedItem.ToString()]) + (car as Ship))
                 {
                     Draw();
                 }
-
                 else
                 {
-                    MessageBox.Show("Парковка переполнена");
+                    MessageBox.Show("Машину не удалось поставить");
                 }
             }
         }
+
 
         private void ParkingSteamerButton_Click(object sender, EventArgs e)
         {
