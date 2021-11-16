@@ -1,0 +1,7 @@
+ParkingCollection
+Parking:scg
+Ship:100;100;-256
+Parking:f
+ClassSteamer:100;100;-65536;-4144960;True;True
+ClassSteamer:100;100;-256;-1;False;True
+Parking:sdf
