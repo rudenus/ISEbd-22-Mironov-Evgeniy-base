@@ -51,15 +51,15 @@ namespace ShipForm
         }
         private void ParkingShipButton_Click(object sender, EventArgs e)
         {
-            var formCarConfig = new FormConfig();
-            formCarConfig.AddEvent(AddShip);
-            formCarConfig.Show();
+            var formShipConfig = new FormConfig();
+            formShipConfig.AddEvent(AddShip);
+            formShipConfig.Show();
         }
-        private void AddShip(Vessel car)
+        private void AddShip(Vessel ship)
         {
-            if (car != null && listBoxParkings.SelectedIndex > -1)
+            if (ship != null && listBoxParkings.SelectedIndex > -1)
             {
-                if ((parkingCol[listBoxParkings.SelectedItem.ToString()]) + (car as Ship))
+                if ((parkingCol[listBoxParkings.SelectedItem.ToString()]) + (ship as Ship))
                 {
                     Draw();
                 }
