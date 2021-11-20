@@ -102,7 +102,7 @@ namespace ShipForm
                 }
                 Ship car = null;
                 string key = string.Empty;
-                for (int i = 1; !fs.EndOfStream; ++i)
+                while(!fs.EndOfStream)
                 {
 
                     //идем по считанным записям
@@ -123,7 +123,7 @@ namespace ShipForm
                         car = new Ship(bufferTextFromFile.Split(separator)[1]);
                     }
                     else if (bufferTextFromFile.Split(separator)[0] == "ClassSteamer")
-                    {
+                    { 
                         car = new ClassSteamer(bufferTextFromFile.Split(separator)[1]);
                     }
                     var result = parkingStages[key] + car;

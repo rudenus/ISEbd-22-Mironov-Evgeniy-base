@@ -1,7 +1,10 @@
 ParkingCollection
-Parking:scg
-Ship:100;100;-256
-Parking:f
-ClassSteamer:100;100;-65536;-4144960;True;True
-ClassSteamer:100;100;-256;-1;False;True
-Parking:sdf
+Parking:мси
+ClassSteamer:100;100;-4144960;-16777024;True;True
+Ship:100;100;-32768
+Parking:пара
+Ship:100;100;-16777024
+ClassSteamer:100;100;-32768;-16777216;True;False
+Parking:фцу
+Parking:рьп
+Ship:100;100;-16744448
