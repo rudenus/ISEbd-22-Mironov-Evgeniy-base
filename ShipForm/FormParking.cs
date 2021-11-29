@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,11 +14,14 @@ namespace ShipForm
     public partial class FormParking : Form
     {
         private readonly ParkingCollection parkingCol;
+        private readonly Logger logger;
+
         public FormParking()
         {
             InitializeComponent();
             parkingCol = new ParkingCollection(pictureBoxParking.Width, pictureBoxParking.Height);
             Draw();
+            logger = LogManager.GetCurrentClassLogger();
         }
         private void ReloadLevels()
         {
@@ -59,13 +63,29 @@ namespace ShipForm
         {
             if (ship != null && listBoxParkings.SelectedIndex > -1)
             {
-                if ((parkingCol[listBoxParkings.SelectedItem.ToString()]) + (ship as Ship))
+                try
                 {
+                    if ((parkingCol[listBoxParkings.SelectedItem.ToString()]) + ship)
+                    {
+                        Draw();
+                        logger.Info($"Добавлен автомобиль {ship}");
+                    }
+                    else
+                    {
+                        logger.Warn("Машину не удалось поставить");
+                        MessageBox.Show("Машину не удалось поставить");
+                    }
                     Draw();
                 }
-                else
+                catch (ParkingOverflowException ex)
                 {
-                    MessageBox.Show("Машину не удалось поставить");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -74,20 +94,33 @@ namespace ShipForm
         {
             if (listBoxParkings.SelectedIndex > -1 && maskedTextBox.Text != "")
             {
-                var ship = parkingCol[listBoxParkings.SelectedItem.ToString()] - 
-                    Convert.ToInt32(maskedTextBox.Text);
-                Random rand = new Random();
-                
-                if (ship != null)
+                try
                 {
-                    FormShip form = new FormShip();
-                    ship.SetPosition(rand.Next(150), rand.Next(150), form.Size.Width, form.Size.Height);
-                    form.SetShip(ship);
-                    form.ShowDialog();
-                    
-                    
+                    var ship = parkingCol[listBoxParkings.SelectedItem.ToString()] -
+                  Convert.ToInt32(maskedTextBox.Text);
+                    Random rand = new Random();
+
+                    if (ship != null)
+                    {
+                        FormShip form = new FormShip();
+                        ship.SetPosition(rand.Next(150), rand.Next(150), form.Size.Width, form.Size.Height);
+                        form.SetShip(ship);
+                        form.ShowDialog();
+                        logger.Info($"Изъят автомобиль {ship} с { maskedTextBox.Text}");
+
+                        Draw();
+                    }
                 }
-                Draw();
+                catch (ParkingNotFoundException ex)
+                {
+                    MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -95,10 +128,12 @@ namespace ShipForm
         {
             if (string.IsNullOrEmpty(textBoxNewParking.Text))
             {
+                logger.Warn("Было введено пустое название парковки");
                 MessageBox.Show("Введите название парковки", "Ошибка",
                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            logger.Info($"Добавили парковку {textBoxNewParking.Text}");
             parkingCol.AddParking(textBoxNewParking.Text);
             ReloadLevels();
 
@@ -111,7 +146,7 @@ namespace ShipForm
                 if (MessageBox.Show($"Удалить парковку{ listBoxParkings.SelectedItem.ToString()}?",
                     "Удаление", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    //parkingCol.DelParking(textBoxNewParking.Text);
+                    logger.Info($"Удалили парковку{ listBoxParkings.SelectedItem.ToString()}");
                     parkingCol.DelParking(listBoxParkings.SelectedItem.ToString());
                     ReloadLevels();
                 }
@@ -121,6 +156,8 @@ namespace ShipForm
 
         private void listBoxParkings_SelectedIndexChanged(object sender, EventArgs e)
         {
+            logger.Info($"Перешли на парковку{ listBoxParkings.SelectedItem.ToString()}");
+
             Draw();
         }
 
@@ -128,14 +165,16 @@ namespace ShipForm
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (parkingCol.SaveData(saveFileDialog.FileName))
+                try
                 {
+                    parkingCol.SaveData(saveFileDialog.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат",
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -146,19 +185,27 @@ namespace ShipForm
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (parkingCol.LoadData(openFileDialog.FileName))
+                try
                 {
+                    parkingCol.LoadData(openFileDialog.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
-                   MessageBoxIcon.Information);
+                    MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog.FileName);
                     ReloadLevels();
                     Draw();
                 }
-                else
+                catch (ParkingOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при загрузке",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+
         }
     }
 
