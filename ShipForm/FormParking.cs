@@ -81,6 +81,7 @@ namespace ShipForm
                 {
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                    logger.Warn("Парковка переполнена");
                 }
                 catch (Exception ex)
                 {
@@ -115,6 +116,7 @@ namespace ShipForm
                 {
                     MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                    logger.Warn("Не найден автомобиль по заданному индексу");
                 }
                 catch (Exception ex)
                 {
