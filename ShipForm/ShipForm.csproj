@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractClass.cs" />
+    <Compile Include="ClassParkingCollection.cs" />
     <Compile Include="FormParking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,7 +64,7 @@
     <Compile Include="FormShip.Designer.cs">
       <DependentUpon>FormShip.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interface1.cs" />
+    <Compile Include="InterfaceShip.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormParking.resx">
