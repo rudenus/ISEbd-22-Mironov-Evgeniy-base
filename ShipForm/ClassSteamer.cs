@@ -44,6 +44,11 @@ bool drawWindow, bool drawPipe) :
 				g.FillEllipse(brushDop, StartPosition.X + 30, StartPosition.Y + 120, 10, 10);
 			}
 		}
+		public void SetDopColor(Color color)
+		{
+			DopColor = color;
+		}
 
-    }
+
+	}
 }

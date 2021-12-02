@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShipForm
 {
-	class Ship: Vessel
+	public class Ship: Vessel
 	{
 		protected readonly int shipWidth = 170;
 		protected readonly int shipHeight = 195;
@@ -57,7 +57,7 @@ shipHeight)
 		}
 		public override void MoveTransport(Direction direction)
 		{
-			int step = (int)Math.Round(MaxSpeed * 10 / Weight);
+			int step = (int)Math.Round((MaxSpeed * 10+1) / (Weight+1));
 			switch (direction)
 			{
 				// вправо

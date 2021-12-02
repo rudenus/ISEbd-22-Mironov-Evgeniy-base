@@ -35,7 +35,6 @@ namespace ShipForm
             this.label1 = new System.Windows.Forms.Label();
             this.PickUpButton = new System.Windows.Forms.Button();
             this.ParkingShipButton = new System.Windows.Forms.Button();
-            this.ParkingSteamerButton = new System.Windows.Forms.Button();
             this.AddParkingButton = new System.Windows.Forms.Button();
             this.RemoveParkingButton = new System.Windows.Forms.Button();
             this.listBoxParkings = new System.Windows.Forms.ListBox();
@@ -99,25 +98,14 @@ namespace ShipForm
             // 
             // ParkingShipButton
             // 
-            this.ParkingShipButton.Location = new System.Drawing.Point(1085, 329);
+            this.ParkingShipButton.Location = new System.Drawing.Point(1085, 310);
             this.ParkingShipButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ParkingShipButton.Name = "ParkingShipButton";
-            this.ParkingShipButton.Size = new System.Drawing.Size(143, 38);
+            this.ParkingShipButton.Size = new System.Drawing.Size(143, 81);
             this.ParkingShipButton.TabIndex = 2;
-            this.ParkingShipButton.Text = "Park the Ship";
+            this.ParkingShipButton.Text = "Add Ship";
             this.ParkingShipButton.UseVisualStyleBackColor = true;
             this.ParkingShipButton.Click += new System.EventHandler(this.ParkingShipButton_Click);
-            // 
-            // ParkingSteamerButton
-            // 
-            this.ParkingSteamerButton.Location = new System.Drawing.Point(1086, 381);
-            this.ParkingSteamerButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ParkingSteamerButton.Name = "ParkingSteamerButton";
-            this.ParkingSteamerButton.Size = new System.Drawing.Size(143, 38);
-            this.ParkingSteamerButton.TabIndex = 3;
-            this.ParkingSteamerButton.Text = "Park the Steamer";
-            this.ParkingSteamerButton.UseVisualStyleBackColor = true;
-            this.ParkingSteamerButton.Click += new System.EventHandler(this.ParkingSteamerButton_Click);
             // 
             // AddParkingButton
             // 
@@ -176,7 +164,6 @@ namespace ShipForm
             this.Controls.Add(this.listBoxParkings);
             this.Controls.Add(this.RemoveParkingButton);
             this.Controls.Add(this.AddParkingButton);
-            this.Controls.Add(this.ParkingSteamerButton);
             this.Controls.Add(this.ParkingShipButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBoxParking);
@@ -199,7 +186,6 @@ namespace ShipForm
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button PickUpButton;
         private System.Windows.Forms.Button ParkingShipButton;
-        private System.Windows.Forms.Button ParkingSteamerButton;
         private System.Windows.Forms.Button AddParkingButton;
         private System.Windows.Forms.Button RemoveParkingButton;
         private System.Windows.Forms.ListBox listBoxParkings;
