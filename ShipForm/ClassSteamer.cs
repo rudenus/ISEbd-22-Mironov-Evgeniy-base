@@ -20,7 +20,21 @@ bool drawWindow, bool drawPipe) :
             this.drawPipe = drawPipe;
             this.drawWindow = drawWindow;
         }
-        public override void DrawTransport(Graphics g)
+		public ClassSteamer(string info) : base(info)
+		{
+			string[] strs = info.Split(separator);
+			if (strs.Length == 6)
+			{
+				MaxSpeed = Convert.ToInt32(strs[0]);
+				Weight = Convert.ToInt32(strs[1]);
+				MainColor = Color.FromArgb(Convert.ToInt32(strs[2]));
+				DopColor = Color.FromArgb(Convert.ToInt32(strs[3]));
+				drawPipe = Convert.ToBoolean(strs[4]);
+				drawWindow = Convert.ToBoolean(strs[5]);
+			}
+		}
+
+		public override void DrawTransport(Graphics g)
         {
 			base.DrawTransport(g);
 			Brush brushDop = new SolidBrush(DopColor);
@@ -48,6 +62,11 @@ bool drawWindow, bool drawPipe) :
 		{
 			DopColor = color;
 		}
+		public override string ToString()
+		{
+			return
+		   $"{base.ToString()}{separator}{DopColor.ToArgb()}{separator}{drawPipe}{separator}{drawWindow}";
+ }
 
 
 	}

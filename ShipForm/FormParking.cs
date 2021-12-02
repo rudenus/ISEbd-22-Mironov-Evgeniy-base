@@ -123,6 +123,43 @@ namespace ShipForm
         {
             Draw();
         }
+
+        private void SaveMenu_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (parkingCol.SaveData(saveFileDialog.FileName))
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Результат",
+                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не сохранилось", "Результат",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+        private void LoadMenu_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (parkingCol.LoadData(openFileDialog.FileName))
+                {
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
+                   MessageBoxIcon.Information);
+                    ReloadLevels();
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 
 }
