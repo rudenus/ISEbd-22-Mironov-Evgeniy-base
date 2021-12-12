@@ -55,24 +55,19 @@ namespace ShipForm
                 {
                     //Начинаем парковку
                     fs.Write($"Parking{separator}{level.Key}{Environment.NewLine}");
-                    IShip ship = null;
-                    for (int i = 0; (ship = level.Value.GetNext(i)) != null; i++)
+                    foreach (IShip ship in level.Value)
                     {
-                        if (ship != null)
+                        //Записываем тип мшаины
+                        if (ship.GetType().Name == "Ship")
                         {
-                            //если место не пустое
-                            //Записываем тип машины
-                            if (ship.GetType().Name == "Ship")
-                            {
-                                fs.Write($"Ship{separator}");
-                            }
-                            if (ship.GetType().Name == "ClassSteamer")
-                            {
-                                fs.Write($"ClassSteamer{separator}");
-                            }
-                            //Записываемые параметры
-                            fs.Write(ship + Environment.NewLine);
+                            fs.Write($"Ship{separator}");
                         }
+                        if (ship.GetType().Name == "ClassSteamer")
+                        {
+                            fs.Write($"ClassSteamer{separator}");
+                        }
+                        //Записываемые параметры
+                        fs.Write(ship + Environment.NewLine);
                     }
                 }
             }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShipForm
 {
-	public class Ship: Vessel
+	public class Ship: Vessel, IEquatable<Ship>
 	{
 		protected readonly int shipWidth = 170;
 		protected readonly int shipHeight = 195;
@@ -106,5 +106,46 @@ shipHeight)
 		{
 			return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.ToArgb()}";
 		}
-	}
+
+		public bool Equals(Ship other)
+		{
+			if (other == null)
+			{
+				return false;
+			}
+			if (GetType().Name != other.GetType().Name)
+			{
+				return false;
+			}
+			if (MaxSpeed != other.MaxSpeed)
+			{
+				return false;
+			}
+			if (Weight != other.Weight)
+			{
+				return false;
+			}
+			if (MainColor != other.MainColor)
+			{
+				return false;
+			}
+			return true;
+		}
+
+		public override bool Equals(Object obj)
+		{
+			if (obj == null)
+			{
+				return false;
+			}
+			if (!(obj is Ship carObj))
+			{
+				return false;
+			}
+			else
+			{
+				return Equals(carObj);
+			}
+		}
+    }
 }

@@ -46,6 +46,7 @@ namespace ShipForm
             this.LoadMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -105,10 +106,10 @@ namespace ShipForm
             // 
             // ParkingShipButton
             // 
-            this.ParkingShipButton.Location = new System.Drawing.Point(1085, 310);
+            this.ParkingShipButton.Location = new System.Drawing.Point(1086, 287);
             this.ParkingShipButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ParkingShipButton.Name = "ParkingShipButton";
-            this.ParkingShipButton.Size = new System.Drawing.Size(143, 81);
+            this.ParkingShipButton.Size = new System.Drawing.Size(143, 61);
             this.ParkingShipButton.TabIndex = 2;
             this.ParkingShipButton.Text = "Add Ship";
             this.ParkingShipButton.UseVisualStyleBackColor = true;
@@ -184,14 +185,14 @@ namespace ShipForm
             // SaveMenu
             // 
             this.SaveMenu.Name = "SaveMenu";
-            this.SaveMenu.Size = new System.Drawing.Size(224, 26);
+            this.SaveMenu.Size = new System.Drawing.Size(125, 26);
             this.SaveMenu.Text = "Save";
             this.SaveMenu.Click += new System.EventHandler(this.SaveMenu_Click);
             // 
             // LoadMenu
             // 
             this.LoadMenu.Name = "LoadMenu";
-            this.LoadMenu.Size = new System.Drawing.Size(224, 26);
+            this.LoadMenu.Size = new System.Drawing.Size(125, 26);
             this.LoadMenu.Text = "Load";
             this.LoadMenu.Click += new System.EventHandler(this.LoadMenu_Click);
             // 
@@ -204,11 +205,22 @@ namespace ShipForm
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Filter = "txt file | *.txt";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1085, 369);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(142, 59);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Sort";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1253, 629);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxNewParking);
             this.Controls.Add(this.listBoxParkings);
@@ -251,5 +263,6 @@ namespace ShipForm
         private System.Windows.Forms.ToolStripMenuItem LoadMenu;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button button1;
     }
 }

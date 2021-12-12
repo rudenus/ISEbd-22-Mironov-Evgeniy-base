@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShipForm
 {
-	class ClassSteamer: Ship
+	class ClassSteamer: Ship, IEquatable<ClassSteamer>
     {
         public Color DopColor { private set; get; }
         public bool drawPipe;
@@ -66,8 +66,58 @@ bool drawWindow, bool drawPipe) :
 		{
 			return
 		   $"{base.ToString()}{separator}{DopColor.ToArgb()}{separator}{drawPipe}{separator}{drawWindow}";
- }
-
+		}
+		public bool Equals(ClassSteamer other)
+		{
+			if (other == null)
+			{
+				return false;
+			}
+			if (GetType().Name != other.GetType().Name)
+			{
+				return false;
+			}
+			if (MaxSpeed != other.MaxSpeed)
+			{
+				return false;
+			}
+			if (Weight != other.Weight)
+			{
+				return false;
+			}
+			if (MainColor != other.MainColor)
+			{
+				return false;
+			}
+			if (DopColor != other.DopColor)
+			{
+				return false;
+			}
+			if (drawPipe != other.drawPipe)
+			{
+				return false;
+			}
+			if (drawWindow != other.drawWindow)
+			{
+				return false;
+			}
+			return true;
+		}
+		public override bool Equals(Object obj)
+		{
+			if (obj == null)
+			{
+				return false;
+			}
+			if (!(obj is ClassSteamer carObj))
+			{
+				return false;
+			}
+			else
+			{
+				return Equals(carObj);
+			}
+		}
 
 	}
 }

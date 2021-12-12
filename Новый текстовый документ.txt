@@ -1,10 +1,1 @@
-ParkingCollection
-Parking:мси
-ClassSteamer:100;100;-4144960;-16777024;True;True
-Ship:100;100;-32768
-Parking:пара
-Ship:100;100;-16777024
-ClassSteamer:100;100;-32768;-16777216;True;False
-Parking:фцу
-Parking:рьп
-Ship:100;100;-16744448
+﻿
