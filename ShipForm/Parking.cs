@@ -29,7 +29,7 @@ namespace ShipForm
         {
             if (p._places.Count >= p.maxCount)
             {
-                return false;
+                throw new ParkingOverflowException();
             }
             p._places.Add(ship);
             return true;
@@ -39,7 +39,7 @@ namespace ShipForm
         {
             if (index < -1 || index >= p._places.Count)
             {
-                return null;
+                throw new ParkingNotFoundException(index);
             }
             T temp = p._places[index];
             p._places.RemoveAt(index);

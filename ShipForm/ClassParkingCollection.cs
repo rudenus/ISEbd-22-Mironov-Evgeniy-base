@@ -9,7 +9,7 @@ namespace ShipForm
 {
     class ParkingCollection
     {
-        readonly Dictionary<string, Parking<Ship>> parkingStages;
+        readonly Dictionary<string, Parking<Vessel>> parkingStages;
         public List<string> Keys => parkingStages.Keys.ToList();
 
         private readonly int pictureWidth;
@@ -17,7 +17,7 @@ namespace ShipForm
         private readonly char separator = ':';
         public ParkingCollection(int pictureWidth, int pictureHeight)
         {
-            parkingStages = new Dictionary<string, Parking<Ship>>();
+            parkingStages = new Dictionary<string, Parking<Vessel>>();
             this.pictureWidth = pictureWidth;
             this.pictureHeight = pictureHeight; 
         }
@@ -25,7 +25,7 @@ namespace ShipForm
         {
             if (!parkingStages.ContainsKey(name))
             {
-                parkingStages.Add(name,new Parking<Ship>(pictureWidth,pictureHeight));
+                parkingStages.Add(name,new Parking<Vessel>(pictureWidth,pictureHeight));
             }
         }
         public void DelParking(string name)
@@ -35,14 +35,14 @@ namespace ShipForm
                 parkingStages.Remove(name);
             }
         }
-        public Parking<Ship> this[string ind]
+        public Parking<Vessel> this[string ind]
         {
             get
             {
                 return parkingStages[ind];
             }
         }
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -76,13 +76,12 @@ namespace ShipForm
                     }
                 }
             }
-            return true;
         }
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             string bufferTextFromFile = "";
             using (StreamReader fs = new StreamReader(filename))
@@ -98,7 +97,7 @@ namespace ShipForm
                 else
                 {
                     //если нет такой записи, то это не те данные
-                    return false;
+                    throw new FileLoadException("Неверный формат файла");
                 }
                 Ship car = null;
                 string key = string.Empty;
@@ -111,7 +110,7 @@ namespace ShipForm
                     {
                         //начинаем новую парковку
                         key = bufferTextFromFile.Split(separator)[1];
-                        parkingStages.Add(key, new Parking<Ship>(pictureWidth, pictureHeight));
+                        parkingStages.Add(key, new Parking<Vessel>(pictureWidth, pictureHeight));
                         continue;
                     }
                     if (string.IsNullOrEmpty(bufferTextFromFile))
@@ -129,12 +128,11 @@ namespace ShipForm
                     var result = parkingStages[key] + car;
                     if (!result)
                     {
-                        return false;
+                        throw new FileLoadException("Не удалось загрузить автомобиль на парковку");
                     }
                 }
 
             }
-            return true;
         }
     }
 
